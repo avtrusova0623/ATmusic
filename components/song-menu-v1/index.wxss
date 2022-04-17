@@ -1,0 +1,26 @@
+/* components/song-menu-v1/index.wxss */
+.menu_list {
+  /* 宽度与视口宽度一致 */
+  width: 100vw;
+  /* 禁止换行 */
+  white-space: nowrap;
+  /* 由于item设置了padding-left左边无法与标题对齐 */
+  position: relative;
+  /* 20是item设置的padding-left*/
+  left: -20rpx;
+}
+
+.menu_item {
+  display: inline-block;
+  /* 真机测试中，有些机型这些item无法对齐，需统一设置顶部对齐 */
+  vertical-align: top;
+  width: 220rpx;
+  /* height: 220rpx; */
+  margin-left: 20rpx;
+  /* background-color: #bfa */
+}
+
+/* 给最后一个item右边留空白 */
+.menu_item:last-of-type {
+  margin-right: 20rpx;
+}

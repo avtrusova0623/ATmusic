@@ -1,0 +1,35 @@
+/* pages/video-detail/index.wxss */
+page {
+  padding-top: 225px;
+}
+/* 视频播放 */
+.video {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 999;
+}
+/* 视频介绍 */
+.info, .recommend{
+  padding: 30rpx;
+}
+.info .title, .recommend .title {
+  font-weight: 700;
+}
+
+.info .desc {
+  /* 隐藏多余部分 */
+  overflow: hidden;
+  /* 强制不换行 */
+  white-space: nowrap;
+  /* 显示省略号 */
+  text-overflow: ellipsis;
+}
+
+.info .desc, .info .other {
+  font-size: 24rpx;
+  margin-top: 10rpx;
+  color: #666;
+}
+
+/* 视频推荐 */

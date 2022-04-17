@@ -1,0 +1,35 @@
+/* components/area-header/index.wxss */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 88rpx;
+}
+
+.header .title {
+  font-size: 36rpx;
+  font-weight: 700;
+}
+
+/* right-default的display默认设置为none
+    判断插槽是否为空
+    插槽若为空
+    right-default的display设置为flex
+    css3伪类选择器:empty: 判断元素是否为空
+    +  表示若为空，则给right-default代表的元素设置样式
+    */
+.header .right-slot:empty +  .right-default{
+  display: flex;
+}
+
+.header .right-default {
+  display: none;
+  align-items: center;
+  font-size: 28rpx;
+  color: #777;
+}
+
+.header .right-default .icon {
+  width: 50rpx;
+  height: 50rpx;
+}

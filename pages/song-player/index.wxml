@@ -1,0 +1,102 @@
+<!--pages/song-player/index.wxml-->
+<wxs src="../../utils/format.wxs" module="format"></wxs>
+<!-- 1. 背景 -->
+<image class="bg-image" mode="aspectFill" src="{{songInfo.al.picUrl}}"></image>
+<!-- 毛玻璃效果 -->
+<view class="bg-cover"></view>
+
+<!-- 2. 导航 -->
+<nav-bar bind:click="handleBackClick">
+  <view slot="title" class="tab">
+    <view class="{{currentPage === 0 ? 'active': ''}}">歌曲</view>
+    <view class="divider">|</view>
+    <view class="{{currentPage === 1 ? 'active': ''}}">歌词</view>
+  </view>
+</nav-bar>
+
+<!-- 3. 内容 -->
+<!-- 
+  	bindchange:
+      current 改变时会触发 change 事件，event.detail = {current, source}
+ -->
+<swiper class="content" 
+        style="height: {{contentHeight}}px;"
+        bind:change="handlePageChange">
+  <swiper-item class="music">
+    <view class="album">
+      <image class="image" mode="aspectFill" src="{{songInfo.al.picUrl}}"></image>
+    </view>
+    <view class="info">
+      <view class="title">{{songInfo.name}}</view>
+      <view class="subtitle">
+        <view class="singer">{{songInfo.ar[0].name}}</view>
+        <view class="alias">专辑: {{songInfo.alia[0]}}</view>
+      </view>
+    </view>
+    <view class="lyric" wx:if="{{isShowLyric}}">{{currentLyricText}}</view>
+    <view class="progress">
+    <!-- slider: 滑动选择器
+         block-size: 滑块的大小，取值范围为 12 - 28
+         value:当前取值
+         bindchange： 完成一次拖动后触发的事件，event.detail = {value}
+         bindchanging： 拖动过程中触发的事件，event.detail = {value}
+     -->
+      <slider class="slider" 
+        block-size="{{12}}"
+        value="{{sliderValue}}"
+        bindchange="handleSliderChange"
+        bindchanging="handleSliderChanging"
+        ></slider>
+      <view class="time">
+        <view class="current">{{format.formatDuration(currentTime)}}</view>
+        <view class="duration">{{format.formatDuration(durationTime)}}</view>
+      </view>
+    </view>
+    <view class="operation">
+      <image class="btn btn-mode" 
+        src="/assets/images/player/play_{{playModeName}}.png"
+        bindtap="handleModeChangeClick"
+        ></image>
+      <image class="btn btn-prev" 
+      bindtap="handlePrevBtnClick"
+      src="/assets/images/player/play_prev.png"
+      ></image>
+      <image class="btn btn-pause" 
+      src="/assets/images/player/play_{{playingName}}.png"
+      bindtap="handlePlayBtnClick"
+      ></image>
+      <image class="btn btn-next" 
+      bindtap="handleNextBtnClick"
+      src="/assets/images/player/play_next.png"
+      ></image>
+      <image class="btn btn-music" 
+      catchtap="handlePlayListClick"
+      src="/assets/images/player/play_music.png"></image>
+    </view>
+  </swiper-item>
+  <swiper-item class="lyric">
+    <!-- scroll-top： 设置竖向滚动条位置 -->
+    <scroll-view class="lyric-list"
+                 scroll-y
+                 scroll-top="{{lyricScrollTop}}"
+                 scroll-with-animation>
+      <block wx:for="{{lyricInfos}}" wx:key="index">
+        <view class="item {{currentLyricIndex === index ? 'active': ''}}"
+              style="padding-top: {{index === 0 ? (contentHeight/2-100): 0}}px; padding-bottom: {{index === lyricInfos.length - 1 ? (contentHeight/2+100): 0}}px;">
+          {{item.text}}
+        </view>
+      </block>
+    </scroll-view>
+  </swiper-item>
+</swiper>
+
+<!-- 弹出层 -->
+<van-popup
+  show="{{ show }}"
+  round
+  position="bottom"
+  custom-style="height: 50%;"
+  bind:close="onClose"
+/>
+
+

@@ -1,0 +1,43 @@
+/* baseui/nav-bar/index.wxss */
+.navbar {
+  display: flex;
+  /* height: 44px; */
+  text-align: center;
+}
+
+.left, .right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120rpx;
+}
+
+/* 默认不显示，插槽为空时显示 */
+.left-arrow {
+  display: none;
+}
+
+.left-slot:empty + .left-arrow {
+  display: block;
+}
+
+.center-title {
+  display: none;
+}
+
+.center-slot:empty + .center-title {
+  display: block;
+}
+
+.left .left-arrow .icon {
+  width: 44rpx;
+  /* dispaly解决图片下有3px问题 */
+  display: block;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}

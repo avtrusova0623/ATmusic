@@ -1,0 +1,8 @@
+<!--pages/home-profile/index.wxml-->
+<button open-type="getUserInfo" bindtap="handleGetUser">获取用户信息</button>
+<button open-type="getPhoneNumber" bindgetphonenumber="handleGetPhoneNumber">获取手机号码</button>
+<!-- 信息展示 -->
+<view class="userInfo">
+  <image class="avatarUrl" src="{{userInfo.avatarUrl}}"></image>
+  <view class="nickName">{{userInfo.nickName}}</view>
+</view>

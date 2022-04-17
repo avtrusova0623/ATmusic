@@ -1,0 +1,13 @@
+/**app.wxss**/
+/* 所有页面默认背景颜色#fa */
+page {
+  background-color: #fafafa;
+  box-sizing: border-box;
+}
+/* 搜索组件样式 */
+.van-search {
+  padding: 10px 0 !important;
+}
+.van-search__content {
+  background-color: #fff !important;
+}

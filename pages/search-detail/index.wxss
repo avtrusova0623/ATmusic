@@ -1,0 +1,58 @@
+/* pages/search-detail/index.wxss */
+page {
+  padding: 0 20rpx;
+  /* 由于搜索框fixed，下面的内容往上移动 */
+  padding-top: 56px;
+}
+/* 搜索框 */
+.search {
+  position: fixed;
+  top: 0;
+  left: 20rpx;
+  right: 20rpx;
+}
+
+/* 热门搜索 */
+.hotSearch {
+  padding: 10rpx;
+}
+.hotSearch-title {
+  font-weight: 700;
+}
+.hotSearch-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+.hotSearch-item {
+  font-size: 26rpx;
+  background-color: #fff;
+  padding: 10rpx 12rpx;
+  border-radius: 16rpx;
+  margin-right: 20rpx;
+  margin-top: 20rpx;
+}
+.hotSearch-item:first-of-type {
+  color: #26ce8a;
+}
+
+/* 建议搜索 */
+.suggest {
+  padding: 10rpx;
+}
+.search-value, .result-title {
+  color: #26ce8a;
+  font-size: 34rpx;
+  font-weight: 700;
+}
+.suggest-item {
+  display: flex;
+  align-items: center;
+  margin-top: 16rpx;
+}
+.suggest-item-title {
+  font-size: 28rpx;
+}
+.suggest-img {
+  width: 66rpx;
+  margin-left: -20rpx;
+}

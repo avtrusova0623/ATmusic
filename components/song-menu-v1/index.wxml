@@ -1,0 +1,20 @@
+<!--components/song-menu-v1/index.wxml-->
+<!-- 头部标题 -->
+<area-header title="{{title}}"
+bindtap="handleMenuMoreClick"
+></area-header>
+<!-- 滑动组件
+  scroll-x:	允许横向滚动
+ -->
+<!-- <scroll-view scroll-x class="menu_list" style="width: {{screenWidth}}px"> -->
+<scroll-view scroll-x class="menu_list">
+  <block wx:for="{{songMenu}}" wx:key="id">
+    <view class="menu_item">
+      <song-menu-item item="{{item}}"
+      bindtap="handleMenuClick"
+      data-item="{{item}}"
+      >
+      </song-menu-item>
+    </view>
+  </block>
+</scroll-view>
